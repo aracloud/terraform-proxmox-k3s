@@ -68,3 +68,8 @@ variable "network_config" {
     gateway = "192.168.30.1"
   }
 }
+
+variable "network_gateway" {
+  description = "Gateway for the network"
+  type        = string
+}
