@@ -73,3 +73,9 @@ variable "network_gateway" {
   description = "Gateway for the network"
   type        = string
 }
+
+variable "datastore" {
+  description = "store where vm runs"
+  type        = string
+  default     = "vmdata"
+}

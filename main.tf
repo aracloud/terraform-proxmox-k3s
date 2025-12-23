@@ -24,7 +24,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master" {
   name = "k3s-master"
   node_name = var.proxmox_node
   pool_id = proxmox_virtual_environment_pool.k3s_pool.pool_id
-  vm_id = 200
+  vm_id = 300
 
   clone {
     vm_id = var.template_vm_id
@@ -47,14 +47,14 @@ resource "proxmox_virtual_environment_vm" "k3s_master" {
   }
 
   disk {
-    datastore_id = "local-zfs"
+    datastore_id = var.datastore
     size = 40
     interface = "scsi0"
     file_format = "raw"
   }
 
   initialization {
-    datastore_id = "local-zfs"
+    datastore_id = var.datastore
 
     ip_config {
       ipv4 {
@@ -77,7 +77,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker" {
   name = "k3s-worker-${count.index + 1}"
   node_name = var.proxmox_node
   pool_id = proxmox_virtual_environment_pool.k3s_pool.pool_id
-  vm_id = 201 + count.index
+  vm_id = 301 + count.index
 
   clone {
     vm_id = var.template_vm_id
@@ -100,14 +100,14 @@ resource "proxmox_virtual_environment_vm" "k3s_worker" {
   }
 
   disk {
-    datastore_id = "local-zfs"
+    datastore_id = var.datastore
     size = 40
     interface = "scsi0"
     file_format = "raw"
   }
 
   initialization {
-    datastore_id = "local-zfs"
+    datastore_id = var.datastore
     
     ip_config {
       ipv4 {
