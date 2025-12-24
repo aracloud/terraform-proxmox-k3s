@@ -1,5 +1,5 @@
 # Proxmox API Configuration
-proxmox_api_url = "https://your-proxmox-host:8006/api2/json"
+proxmox_api_url = "https://<your-proxmox-host>:8006/api2/json"
 proxmox_node = "your-proxmox-node"
 proxmox_api_token_id = "root@pam!terraform"
 proxmox_api_token_secret = "your-api-token-secret"
@@ -12,7 +12,10 @@ template_vm_id = 9000
 ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2E... your-ssh-key"
 
 # Network Configuration
-network_gateway = "192.168.30.1"
+network_gateway = "<network gateway>"
+
+# Storage Configuration
+datastore = "<datastore proxmox>>"
 
 # Kubernetes Master Node Configuration
 kubernetes_master = {
