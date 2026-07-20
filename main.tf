@@ -24,7 +24,7 @@ resource "proxmox_virtual_environment_vm" "k3s_master" {
   name = "k3s-master"
   node_name = var.proxmox_node
   pool_id = proxmox_virtual_environment_pool.k3s_pool.pool_id
-  vm_id = 300
+  vm_id = 500
   on_boot = false
 
   clone {
@@ -78,7 +78,7 @@ resource "proxmox_virtual_environment_vm" "k3s_worker" {
   name = "k3s-worker-${count.index + 1}"
   node_name = var.proxmox_node
   pool_id = proxmox_virtual_environment_pool.k3s_pool.pool_id
-  vm_id = 301 + count.index
+  vm_id = 501 + count.index
   on_boot = false
 
   clone {
